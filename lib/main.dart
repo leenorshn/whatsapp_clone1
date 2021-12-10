@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone1/screens/chat_room.dart';
+import 'package:whatsapp_clone1/screens/contact_screen.dart';
+import 'package:whatsapp_clone1/screens/profile.dart';
 import 'package:whatsapp_clone1/screens/whatsapp_home.dart';
 
 void main() {
@@ -21,7 +24,13 @@ class MyApp extends StatelessWidget {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             backgroundColor: Colors.teal,
           )),
-      home: const WhatsappHome(),
+      //home: const WhatsappHome(),
+      routes: {
+        "/": (context) => const WhatsappHome(),
+        "contact_screen": (context) => const ContactScreen(),
+        "profile": (context) => const Profile(),
+        "chat_room": (context) => const ChatRoom(),
+      },
     );
   }
 }

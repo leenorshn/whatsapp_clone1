@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone1/screens/profile.dart';
+import 'package:whatsapp_clone1/pages/disc_page.dart';
 
 class WhatsappHome extends StatefulWidget {
   const WhatsappHome({Key? key}) : super(key: key);
@@ -11,12 +11,11 @@ class WhatsappHome extends StatefulWidget {
 
 class _WhatsappHomeState extends State<WhatsappHome>
     with SingleTickerProviderStateMixin {
-  var contacts = ["Isso", "Ushindi", "Victor"];
   late TabController _controller;
   @override
   void initState() {
     // TODO: implement initState
-    _controller = TabController(length: 4, vsync: this, initialIndex: 3);
+    _controller = TabController(length: 4, vsync: this, initialIndex: 1);
     super.initState();
   }
   // @override
@@ -54,46 +53,25 @@ class _WhatsappHomeState extends State<WhatsappHome>
           ],
         ),
       ),
-      body: ListView.builder(
-          padding: const EdgeInsets.only(
-            left: 8,
-            right: 8,
-            top: 16,
-            bottom: 72,
+      body: TabBarView(
+        controller: _controller,
+        children: [
+          Container(
+            child: Text("Camera"),
           ),
-          itemCount: contacts.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Profile()));
-                },
-                leading: const CircleAvatar(
-                  backgroundImage:
-                      NetworkImage("https://github.com/leenorshn.png"),
-                ),
-                title: Text(
-                  contacts[index],
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                  ),
-                ),
-                subtitle: const Text(
-                  "0978154329",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-                trailing: Icon(CupertinoIcons.phone),
-              ),
-            );
-          }),
+          DiscPage(),
+          Container(
+            child: Text("Status"),
+          ),
+          Container(
+            child: Text("Calls"),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed("contact_screen");
+        },
         child: const Icon(CupertinoIcons.chat_bubble),
       ),
     );
