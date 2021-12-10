@@ -9,14 +9,14 @@ class ChatRoom extends StatefulWidget {
 }
 
 class _ChatRoomState extends State<ChatRoom> {
-  final roundedContainer = ClipRRect(
-    borderRadius: BorderRadius.circular(20.0),
+  final Widget roundedContainer = ClipRRect(
+    borderRadius: BorderRadius.circular(30.0),
     child: Container(
       color: Colors.white,
       child: Row(
         children: <Widget>[
           const SizedBox(width: 8.0),
-          Icon(Icons.insert_emoticon, size: 30.0, color: Colors.grey[700]),
+          Icon(Icons.insert_emoticon, size: 30.0, color: Colors.grey[500]),
           const SizedBox(width: 8.0),
           const Expanded(
             child: TextField(
@@ -26,9 +26,9 @@ class _ChatRoomState extends State<ChatRoom> {
               ),
             ),
           ),
-          Icon(Icons.attach_file, size: 30.0, color: Colors.grey[700]),
+          Icon(Icons.attach_file, size: 30.0, color: Colors.grey[500]),
           const SizedBox(width: 5.0),
-          Icon(Icons.camera_alt, size: 30.0, color: Colors.grey[700]),
+          Icon(Icons.camera_alt, size: 30.0, color: Colors.grey[500]),
           const SizedBox(width: 6.0),
         ],
       ),
@@ -60,63 +60,30 @@ class _ChatRoomState extends State<ChatRoom> {
                 },
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 6, left: 4),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
-                children: [
+                children: <Widget>[
                   Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        color: Colors.white,
-                        child: Row(
-                          children: const [
-                            Icon(
-                              Icons.attach_file,
-                              color: Colors.grey,
-                            ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Ecrire ici",
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                            Icon(
-                              Icons.camera_alt,
-                              color: Colors.grey,
-                              size: 20,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: roundedContainer,
                   ),
                   const SizedBox(
-                    width: 8,
+                    width: 5.0,
                   ),
-                  Container(
-                    height: 48,
-                    width: 48,
-                    decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(28)),
-                    child: const Center(
+                  GestureDetector(
+                    onTap: () {},
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.teal,
                       child: Icon(
                         Icons.send,
-                        size: 18,
                         color: Colors.white,
+                        size: 20,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 8,
-                  )
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
